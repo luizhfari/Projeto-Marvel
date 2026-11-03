@@ -1,0 +1,365 @@
+/* =====================================================================
+   style.css - Portal Marvel - Luiz Farias
+   CSS EXTERNO: concentra a maior parte da estilização do projeto.
+   Cores padrão: modo escuro. O JavaScript alterna a classe luiz_claro no <body>.
+   As cores de fundo da página são trocadas com onclick nos botões do HTML.
+   ===================================================================== */
+
+/* ---------- SELETORES DE TAG (estilizam todos os elementos daquele tipo) ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #eeeeee;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+button {
+  background-color: #c0121c;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+   border-collapse: collapse;
+}
+
+fieldset {
+  border: 1px solid #555555;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+}
+
+/* ---------- SELETOR AGRUPADO (vários seletores separados por vírgula) ---------- */
+th, td {
+  padding: 10px;
+  border: 1px solid #444444;
+  text-align: left;
+}
+
+th {
+  background-color: #c0121c;
+  color: #ffffff;
+}
+
+/* Títulos h2 recebem uma linha embaixo na cor do tema */
+h2 {
+  border-bottom: 3px solid #c0121c;
+  padding-bottom: 6px;
+}
+
+/* ---------- HEADER, MENU E FOOTER ---------- */
+header {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 16px 24px;
+  border-bottom: 4px solid #c0121c;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+}
+
+/* SELETOR ENCADEADO (descendente): pega só os links dentro do menu */
+#luiz_menu ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#luiz_menu ul li a:hover {
+  text-decoration: underline;
+}
+
+#luiz_menu ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+#luiz_tema {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 16px;
+  border-top: 4px solid #c0121c;
+}
+
+/* ---------- BANNER (seletor de ID) ---------- */
+#luiz_banner {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#luiz_banner img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover; /* corta a imagem para preencher sem distorcer */
+}
+
+/* ---------- LAYOUT: main (esquerda) e aside (direita) ---------- */
+#container {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+#luiz_principal {
+  flex: 3;
+  min-width: 0;
+}
+
+#luiz_lateral {
+  flex: 1;
+}
+
+.luiz_bloco_lateral {
+  background-color: #1e1e1e;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* ---------- GRID A: 3 colunas iguais com repeat() e fr (cards) ---------- */
+#luiz_grade_cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* SELETOR DE CLASSE */
+.luiz_card {
+  background-color: #1e1e1e;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.luiz_card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ---------- GRID B: proporções diferentes (coluna do meio maior) ---------- */
+#luiz_grade_destaques {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 16px;
+}
+
+.luiz_destaque_lado, .luiz_destaque_centro {
+  background-color: #1e1e1e;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.luiz_destaque_lado img, .luiz_destaque_centro img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.luiz_destaque_centro img {
+  height: 300px;
+}
+
+/* ---------- GALERIA ---------- */
+#luiz_galeria_imagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#luiz_galeria_imagens img {
+  width: 23%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ---------- CARROSSEL: uma imagem, o JS troca o src ---------- */
+#foto {
+  display: block;
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* ---------- ABAS: os painéis começam escondidos; o JS mostra um ---------- */
+#luiz_generos button {
+  margin-right: 6px;
+  margin-bottom: 8px;
+}
+
+#luiz_generos button.ativo {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.luiz_painel {
+  display: none;
+  background-color: #1e1e1e;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* ---------- ONDE ASSISTIR ---------- */
+#luiz_lista_assistir li {
+  margin-bottom: 8px;
+}
+
+#luiz_assistir a {
+  color: #f0b429;
+}
+
+/* ---------- FAQ: a resposta começa escondida; o JS abre e fecha ---------- */
+.luiz_faq_item {
+  margin-bottom: 8px;
+}
+
+.luiz_faq_pergunta {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+}
+
+.luiz_faq_resposta {
+  display: none;
+  background-color: #1e1e1e;
+  padding: 0 12px;
+}
+
+/* ---------- FORMULÁRIO ---------- */
+#luiz_formulario label, #luiz_form_perguntas label {
+  display: block;
+  margin-top: 10px;
+}
+
+#luiz_nome, #luiz_email, #luiz_idade, #luiz_nota, #luiz_filme, #luiz_comentario {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #222222;
+  color: #eeeeee;
+  border: 1px solid #555555;
+  border-radius: 4px;
+}
+
+/* ---------- MODAL: começa invisível; o JS muda para display: block ---------- */
+#luiz_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#luiz_modal_caixa {
+  background-color: #1e1e1e;
+  width: 360px;
+  max-width: 90%;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* ---------- PÁGINA perguntas.html ---------- */
+#luiz_principal_perguntas {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.luiz_resposta, #luiz_form_perguntas textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #222222;
+  color: #eeeeee;
+  border: 1px solid #555555;
+  border-radius: 4px;
+}
+
+#luiz_resultado {
+  display: none;
+  background-color: #1e1e1e;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* =====================================================================
+   MODO CLARO: o JS alterna a classe luiz_claro no <body>.
+   ===================================================================== */
+.luiz_claro {
+  background-color: #f2f2f2;
+  color: #111111;
+}
+
+.luiz_claro .luiz_card,
+.luiz_claro .luiz_bloco_lateral,
+.luiz_claro .luiz_destaque_lado,
+.luiz_claro .luiz_destaque_centro,
+.luiz_claro .luiz_painel,
+.luiz_claro .luiz_faq_resposta,
+.luiz_claro #luiz_modal_caixa {
+  background-color: #ffffff;
+}
+
+.luiz_claro #luiz_nome,
+.luiz_claro #luiz_email,
+.luiz_claro #luiz_idade,
+.luiz_claro #luiz_nota,
+.luiz_claro #luiz_filme,
+.luiz_claro #luiz_comentario {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.luiz_claro th, .luiz_claro td {
+  border-color: #aaaaaa;
+}
+
+/* ---------- TELAS PEQUENAS (celular): tudo em uma coluna ---------- */
+@media (max-width: 800px) {
+  #container {
+    flex-direction: column;
+  }
+  #luiz_grade_cards, #luiz_grade_destaques {
+    grid-template-columns: 1fr;
+  }
+  #luiz_galeria_imagens img {
+    width: 47%;
+  }
+  #foto {
+    height: 260px;
+  }
+}

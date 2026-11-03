@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responda o FAQ - Luiz Farias</title>
+  <!-- Usa o MESMO style.css do portal -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header id="luiz_cabecalho">
+    <h1>Responda o FAQ do Portal Marvel</h1>
+    <nav id="luiz_menu">
+      <ul>
+        <!-- Link para voltar à página principal -->
+        <li><a href="index.html">Voltar ao portal</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="luiz_principal_perguntas">
+
+    <section>
+      <h2>Agora é a sua vez</h2>
+      <p>Responda as perguntas abaixo e clique em enviar. Suas respostas aparecem na tela.</p>
+
+      <form id="luiz_form_perguntas">
+        <fieldset>
+          <legend>Suas respostas</legend>
+
+          <label for="luiz_resp_1">1. Qual é o seu herói preferido e por quê?</label>
+          <textarea id="luiz_resp_1" rows="3"></textarea>
+
+          <label for="luiz_resp_2">2. Qual filme do Homem-Aranha você mais gosta?</label>
+          <textarea id="luiz_resp_2" rows="3"></textarea>
+
+          <label for="luiz_resp_3">3. Qual filme dos Vingadores você mais gosta e por quê?</label>
+          <textarea id="luiz_resp_3" rows="3"></textarea>
+
+          <label for="luiz_resp_4">4. Em que ordem você assistiria esses filmes?</label>
+          <textarea id="luiz_resp_4" rows="3"></textarea>
+
+          <label for="luiz_resp_5">5. Onde você costuma assistir filmes?</label>
+          <textarea id="luiz_resp_5" rows="3"></textarea>
+
+          <label for="luiz_resp_6">6. O que você gostaria de ver no clube Marvel?</label>
+          <textarea id="luiz_resp_6" rows="3"></textarea>
+        </fieldset>
+
+        <!-- type="button" impede o form de recarregar; onclick chama enviar() -->
+        <button type="button" onclick="enviar()">Enviar respostas</button>
+        <p id="luiz_mensagem_perguntas"></p>
+      </form>
+    </section>
+
+    <!-- Resultado: começa escondido (display: none no CSS) até o JavaScript mostrar -->
+    <section id="luiz_resultado">
+      <h2>Suas respostas</h2>
+      <h3>1. Qual é o seu herói preferido e por quê?</h3>
+      <p id="saida1"></p>
+      <h3>2. Qual filme do Homem-Aranha você mais gosta?</h3>
+      <p id="saida2"></p>
+      <h3>3. Qual filme dos Vingadores você mais gosta e por quê?</h3>
+      <p id="saida3"></p>
+      <h3>4. Em que ordem você assistiria esses filmes?</h3>
+      <p id="saida4"></p>
+      <h3>5. Onde você costuma assistir filmes?</h3>
+      <p id="saida5"></p>
+      <h3>6. O que você gostaria de ver no clube Marvel?</h3>
+      <p id="saida6"></p>
+    </section>
+
+  </main>
+
+  <footer id="luiz_rodape">
+    <p>Portal Marvel · Trabalho Prático Integrador · 2026</p>
+    <p>Desenvolvido por Luiz Farias</p>
+  </footer>
+
+  <!-- JavaScript desta página -->
+  <script src="perguntas.js"></script>
+</body>
+
+</html>

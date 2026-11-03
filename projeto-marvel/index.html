@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<!-- Declara que o documento é HTML5 -->
+<html lang="pt-BR">
+<!-- <html> envolve tudo; lang="pt-BR" informa que o idioma é português do Brasil -->
+
+<head>
+  <!-- <head> guarda informações da página que não aparecem na tela -->
+  <meta charset="UTF-8">
+  <!-- charset UTF-8 faz acentos e "ç" aparecerem corretamente -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ajusta a página para telas de celular -->
+
+  <title>Portal Marvel - Luiz Farias</title>
+  <!-- REQUISITO: o <title> precisa ter o seu nome -->
+
+  <link rel="stylesheet" href="style.css">
+  <!-- REQUISITO CSS: liga o arquivo externo style.css (a principal forma de estilização) -->
+
+  <style>
+    /* REQUISITO CSS INTERNO: formata 3 elementos HTML (rodapé, legenda da tabela e mensagem do formulário) */
+    footer p {
+      font-size: 14px;
+    }
+
+    caption {
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    #luiz_mensagem {
+      font-weight: bold;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <body> contém tudo o que aparece na tela -->
+
+  <!-- ================= HEADER (usado uma única vez) ================= -->
+  <header id="luiz_cabecalho">
+    <h1>Portal Marvel - Luiz Farias</h1>
+    <!-- h1 só uma vez na página: é o título principal -->
+
+    <!-- NAV (uma única vez): contém o menu de navegação -->
+    <nav id="luiz_menu">
+      <!-- Menu feito com lista não ordenada (ul + li), cada item com um link -->
+      <ul>
+        <li><a href="#luiz_banner">Início</a></li>
+        <li><a href="#luiz_filmes">Filmes</a></li>
+        <li><a href="#luiz_galeria">Galeria</a></li>
+        <li><a href="#luiz_ranking">Ranking</a></li>
+        <li><a href="#luiz_assistir">Onde assistir</a></li>
+        <li><a href="perguntas.html" target="_blank">FAQ</a></li>
+        <li><a href="#luiz_contato">Contato</a></li>
+        <!-- LINKS EXTERNOS: target="_blank" abre o link em uma nova aba -->
+        <li><a href="https://www.marvel.com" target="_blank" rel="noopener noreferrer">Marvel oficial</a></li>
+        <li><a href="https://pt.wikipedia.org/wiki/Homem-Aranha" target="_blank" rel="noopener noreferrer">Sobre o Homem-Aranha</a></li>
+      </ul>
+      <!-- href="#id" leva a página até o elemento que tem aquele id.
+           O link FAQ abre outra página do projeto (perguntas.html) e os dois últimos abrem sites externos. -->
+    </nav>
+
+    <!-- Funcionalidade: troca de cores (4 opções) e modo claro/escuro -->
+    <div id="luiz_tema">
+      <!-- DIV: usada para agrupar os botões de tema -->
+      <!-- onclick escrito direto na tag (inline): ao clicar, muda a cor de fundo da página (document.body.style.backgroundColor) -->
+      <button onclick="document.body.style.backgroundColor='#c0121c'">Vermelho</button>
+      <button onclick="document.body.style.backgroundColor='#1f6fe0'">Azul</button>
+      <button onclick="document.body.style.backgroundColor='#7b3fc4'">Roxo</button>
+      <button onclick="document.body.style.backgroundColor='#f0b429'">Dourado</button>
+      <!-- Este botão chama a função alternarTema() do script.js -->
+      <button id="btnTema" onclick="alternarTema()">Modo claro/escuro</button>
+    </div>
+  </header>
+
+  <!-- ================= BANNER (área de destaque) ================= -->
+  <section id="luiz_banner">
+    <img src="img/banner.jpg" alt="Homem-Aranha balançando entre os prédios">
+    <!-- Imagem LOCAL dentro da pasta img/ (nada de endereço externo) -->
+    <h2>Homem-Aranha: Um Novo Dia</h2>
+    <p>O filme do momento e o primeiro da minha lista de favoritos.</p>
+    <button onclick="abrirModal('Homem-Aranha: Um Novo Dia', '2026 · Direção: Destin Daniel Cretton', 'Peter Parker enfrenta um novo capítulo da vida de herói nas ruas de Nova York.')">Ver detalhes</button>
+  </section>
+
+  <!-- Container geral: coloca main e aside lado a lado (o CSS faz isso depois) -->
+  <div id="container">
+
+    <!-- ================= MAIN (usado uma única vez): conteúdo principal ================= -->
+    <main id="luiz_principal">
+
+      <!-- ---------- CARROSSEL (Funcionalidade JS: mínimo 8 imagens) ---------- -->
+      <section id="luiz_carrossel_secao">
+        <h2>Destaques do Universo Marvel</h2>
+        <!-- Uma única imagem; o JavaScript troca o src dela (lista fotos no script.js) -->
+        <img id="foto" src="img/carrossel-1.jpg" alt="Imagem do carrossel">
+        <p id="luiz_legenda">Homem-Aranha: Um Novo Dia</p>
+        <p id="indicador">Imagem 1 de 8</p>
+        <!-- onclick chama a função mudar() passando -1 (voltar) ou 1 (avançar) -->
+        <button onclick="mudar(-1)">Anterior</button>
+        <button onclick="mudar(1)">Próximo</button>
+      </section>
+
+      <!-- ---------- CARDS (mínimo 4) - usados com o GRID A: 3 colunas iguais ---------- -->
+      <section id="luiz_filmes">
+        <h2>Meus filmes favoritos</h2>
+        <div id="luiz_grade_cards">
+          <!-- GRID A: no CSS, esta div recebe display:grid e repeat(3, 1fr) -->
+
+          <!-- ARTICLE: cada card é um conteúdo independente, por isso usa <article> -->
+          <article class="luiz_card">
+            <img src="img/poster-1.jpg" alt="Pôster de Homem-Aranha: Um Novo Dia">
+            <h3>Homem-Aranha: Um Novo Dia</h3>
+            <p>2026 · Ação</p>
+            <button onclick="abrirModal('Homem-Aranha: Um Novo Dia', '2026 · Direção: Destin Daniel Cretton', 'Peter Parker enfrenta um novo capítulo da vida de herói nas ruas de Nova York.')">Ver detalhes</button>
+          </article>
+
+          <article class="luiz_card">
+            <img src="img/poster-2.jpg" alt="Pôster de Homem-Aranha: Sem Volta para Casa">
+            <h3>Homem-Aranha: Sem Volta para Casa</h3>
+            <p>2021 · Ação</p>
+            <button onclick="abrirModal('Homem-Aranha: Sem Volta para Casa', '2021 · Direção: Jon Watts', 'Peter pede ajuda ao Doutor Estranho para esconder sua identidade, mas o feitiço abre as portas do multiverso.')">Ver detalhes</button>
+          </article>
+
+          <article class="luiz_card">
+            <img src="img/poster-3.jpg" alt="Pôster de Homem-Aranha: De Volta ao Lar">
+            <h3>Homem-Aranha: De Volta ao Lar</h3>
+            <p>2017 · Ação</p>
+            <button onclick="abrirModal('Homem-Aranha: De Volta ao Lar', '2017 · Direção: Jon Watts', 'Peter divide a rotina de estudante com a de herói enquanto enfrenta o Abutre.')">Ver detalhes</button>
+          </article>
+
+          <article class="luiz_card">
+            <img src="img/poster-4.jpg" alt="Pôster de Homem-Aranha: Longe de Casa">
+            <h3>Homem-Aranha: Longe de Casa</h3>
+            <p>2019 · Ação</p>
+            <button onclick="abrirModal('Homem-Aranha: Longe de Casa', '2019 · Direção: Jon Watts', 'Em uma viagem de escola pela Europa, Peter é recrutado por Nick Fury e conhece Mysterio.')">Ver detalhes</button>
+          </article>
+
+          <article class="luiz_card">
+            <img src="img/poster-5.jpg" alt="Pôster de Homem de Ferro">
+            <h3>Homem de Ferro</h3>
+            <p>2008 · Ação</p>
+            <button onclick="abrirModal('Homem de Ferro', '2008 · Direção: Jon Favreau', 'Preso em uma caverna, o bilionário Tony Stark constrói uma armadura e se torna o Homem de Ferro.')">Ver detalhes</button>
+          </article>
+
+          <article class="luiz_card">
+            <img src="img/poster-6.jpg" alt="Pôster de Capitão América: Guerra Civil">
+            <h3>Capitão América: Guerra Civil</h3>
+            <p>2016 · Ação</p>
+            <button onclick="abrirModal('Capitão América: Guerra Civil', '2016 · Direção: Irmãos Russo', 'Os Vingadores se dividem em dois lados por causa dos Acordos de Sokovia.')">Ver detalhes</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- ---------- DESTAQUES - usados com o GRID B: proporções 1fr 2fr 1fr ---------- -->
+      <section id="luiz_destaques">
+        <h2>Os grandes crossovers</h2>
+        <div id="luiz_grade_destaques">
+          <!-- GRID B: no CSS, esta div recebe grid-template-columns: 1fr 2fr 1fr -->
+          <article class="luiz_destaque_lado">
+            <img src="img/destaque-1.jpg" alt="Cena de Vingadores: Guerra Infinita">
+            <h3>Vingadores: Guerra Infinita</h3>
+            <p>2018</p>
+            <button onclick="abrirModal('Vingadores: Guerra Infinita', '2018 · Direção: Irmãos Russo', 'Os heróis se unem para impedir que Thanos reúna todas as Joias do Infinito.')">Ver detalhes</button>
+          </article>
+
+          <!-- Coluna do meio (a maior, 2fr) -->
+          <article class="luiz_destaque_centro">
+            <img src="img/destaque-2.jpg" alt="Cena de Vingadores: Ultimato">
+            <h3>Vingadores: Ultimato</h3>
+            <p>2019 · O encerramento da Saga do Infinito</p>
+            <button onclick="abrirModal('Vingadores: Ultimato', '2019 · Direção: Irmãos Russo', 'Os heróis que restaram tentam desfazer o estrago causado por Thanos.')">Ver detalhes</button>
+          </article>
+
+          <article class="luiz_destaque_lado">
+            <h3>Ordem para assistir</h3>
+            <p>Homem de Ferro, Guerra Civil, De Volta ao Lar, Guerra Infinita, Ultimato, Longe de Casa, Sem Volta para Casa e Um Novo Dia.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ---------- GALERIA DE IMAGENS ---------- -->
+      <section id="luiz_galeria">
+        <h2>Galeria de cenas</h2>
+        <div id="luiz_galeria_imagens" style="margin-top: 16px;">
+          <!-- CSS INLINE (situação 1 de 2): o atributo style aplica o estilo direto na tag -->
+          <img src="img/cena-1.jpg" alt="Cena 1">
+          <img src="img/cena-2.jpg" alt="Cena 2">
+          <img src="img/cena-3.jpg" alt="Cena 3">
+          <img src="img/cena-4.jpg" alt="Cena 4">
+          <img src="img/cena-5.jpg" alt="Cena 5">
+          <img src="img/cena-6.jpg" alt="Cena 6">
+          <img src="img/cena-7.jpg" alt="Cena 7">
+          <img src="img/cena-8.jpg" alt="Cena 8">
+        </div>
+      </section>
+
+      <!-- ---------- ABAS POR GÊNERO (Funcionalidade JS: mínimo 6 abas) ---------- -->
+      <section id="luiz_generos">
+        <h2>Filmes por gênero</h2>
+        <!-- Botões das abas -->
+        <div id="luiz_abas">
+          <button id="btnAba1" class="ativo" onclick="mostrarAba(1)">Ação</button>
+          <button id="btnAba2" onclick="mostrarAba(2)">Drama</button>
+          <button id="btnAba3" onclick="mostrarAba(3)">Ficção científica</button>
+          <button id="btnAba4" onclick="mostrarAba(4)">Terror</button>
+          <button id="btnAba5" onclick="mostrarAba(5)">Comédia</button>
+          <button id="btnAba6" onclick="mostrarAba(6)">Animação</button>
+        </div>
+
+        <!-- Conteúdo de cada aba: o JS mostra um painel por vez (a aba 1 começa visível) -->
+        <div id="aba1" class="luiz_painel" style="display: block;">
+          <h3>Ação</h3>
+          <ul>
+            <li>Duro de Matar (1988)</li>
+            <li>Indiana Jones: Os Caçadores da Arca Perdida (1981)</li>
+            <li>Top Gun: Maverick (2022)</li>
+            <li>Deadpool &amp; Wolverine (2024)</li>
+          </ul>
+        </div>
+        <div id="aba2" class="luiz_painel">
+          <h3>Drama</h3>
+          <ul>
+            <li>O Poderoso Chefão (1972)</li>
+            <li>Forrest Gump (1994)</li>
+            <li>Oppenheimer (2023)</li>
+            <li>Ainda Estou Aqui (2024)</li>
+          </ul>
+        </div>
+        <div id="aba3" class="luiz_painel">
+          <h3>Ficção científica</h3>
+          <ul>
+            <li>Star Wars (1977)</li>
+            <li>Matrix (1999)</li>
+            <li>Duna: Parte Dois (2024)</li>
+            <li>Avatar: O Caminho da Água (2022)</li>
+          </ul>
+        </div>
+        <div id="aba4" class="luiz_painel">
+          <h3>Terror</h3>
+          <ul>
+            <li>O Iluminado (1980)</li>
+            <li>O Exorcista (1973)</li>
+            <li>Corra! (2017)</li>
+            <li>Pecadores (2025)</li>
+          </ul>
+        </div>
+        <div id="aba5" class="luiz_painel">
+          <h3>Comédia</h3>
+          <ul>
+            <li>Esqueceram de Mim (1990)</li>
+            <li>Os Caça-Fantasmas (1984)</li>
+            <li>Barbie (2023)</li>
+            <li>Free Guy (2021)</li>
+          </ul>
+        </div>
+        <div id="aba6" class="luiz_painel">
+          <h3>Animação</h3>
+          <ul>
+            <li>O Rei Leão (1994)</li>
+            <li>Toy Story (1995)</li>
+            <li>Divertida Mente 2 (2024)</li>
+            <li>Homem-Aranha: Através do Aranhaverso (2023)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ---------- TABELA 7x5 (7 linhas e 5 colunas, contando o cabeçalho) ---------- -->
+      <section id="luiz_ranking">
+        <h2>Ranking dos meus favoritos</h2>
+        <table id="luiz_tabela">
+          <caption>Top 6 filmes da minha lista</caption>
+          <!-- caption = título da tabela -->
+
+          <thead>
+            <!-- thead = cabeçalho; th = célula de cabeçalho -->
+            <tr>
+              <th>Posição</th>
+              <th>Título</th>
+              <th>Diretor</th>
+              <th>Ano</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- tbody = corpo da tabela; td = célula comum. São 6 linhas aqui + 1 do cabeçalho = 7 -->
+            <tr>
+              <td>1º</td>
+              <td>Homem-Aranha: Um Novo Dia</td>
+              <td>Destin Daniel Cretton</td>
+              <td>2026</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>2º</td>
+              <td>Homem-Aranha: Sem Volta para Casa</td>
+              <td>Jon Watts</td>
+              <td>2021</td>
+              <td>9,5</td>
+            </tr>
+            <tr>
+              <td>3º</td>
+              <td>Homem-Aranha: De Volta ao Lar</td>
+              <td>Jon Watts</td>
+              <td>2017</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>4º</td>
+              <td>Homem-Aranha: Longe de Casa</td>
+              <td>Jon Watts</td>
+              <td>2019</td>
+              <td>8,5</td>
+            </tr>
+            <tr>
+              <td>5º</td>
+              <td>Homem de Ferro</td>
+              <td>Jon Favreau</td>
+              <td>2008</td>
+              <td>8,5</td>
+            </tr>
+            <tr>
+              <td>6º</td>
+              <td>Capitão América: Guerra Civil</td>
+              <td>Irmãos Russo</td>
+              <td>2016</td>
+              <td>8</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---------- ONDE ASSISTIR: lista com os locais de cada filme ---------- -->
+      <section id="luiz_assistir">
+        <h2>Onde assistir</h2>
+        <p>Locais onde os filmes do portal estavam disponíveis no Brasil entre agosto e outubro de 2026. Os catálogos mudam com frequência, então confira antes de assistir.</p>
+        <!-- ul + li: lista não ordenada; cada item tem o filme e o serviço -->
+        <ul id="luiz_lista_assistir">
+          <li><strong>Homem-Aranha: Um Novo Dia</strong>: aluguel digital no <a href="https://www.primevideo.com" target="_blank" rel="noopener noreferrer">Prime Video</a>, Apple TV e Google TV</li>
+          <li><strong>Homem-Aranha: Sem Volta para Casa</strong>: Universal+ (também como canal no Prime Video); aluguel e compra digital</li>
+          <li><strong>Homem-Aranha: De Volta ao Lar</strong>: <a href="https://www.hbomax.com" target="_blank" rel="noopener noreferrer">HBO Max</a>; aluguel e compra no Prime Video</li>
+          <li><strong>Homem-Aranha: Longe de Casa</strong>: <a href="https://www.netflix.com" target="_blank" rel="noopener noreferrer">Netflix</a></li>
+          <li><strong>Homem de Ferro</strong>: <a href="https://www.disneyplus.com" target="_blank" rel="noopener noreferrer">Disney+</a></li>
+          <li><strong>Capitão América: Guerra Civil</strong>: <a href="https://www.disneyplus.com" target="_blank" rel="noopener noreferrer">Disney+</a></li>
+          <li><strong>Vingadores: Guerra Infinita</strong>: <a href="https://www.disneyplus.com" target="_blank" rel="noopener noreferrer">Disney+</a></li>
+          <li><strong>Vingadores: Ultimato</strong>: <a href="https://www.disneyplus.com" target="_blank" rel="noopener noreferrer">Disney+</a></li>
+        </ul>
+        <p>Dica: o site <a href="https://www.justwatch.com/br" target="_blank" rel="noopener noreferrer">JustWatch</a> mostra a disponibilidade atualizada de qualquer filme.</p>
+      </section>
+
+      <!-- ---------- FAQ / ACCORDION (Funcionalidade JS: mínimo 6 itens) ---------- -->
+      <section id="luiz_faq">
+        <h2>Perguntas frequentes</h2>
+        <p>Quer responder também? <a href="perguntas.html" target="_blank">Responda as perguntas em outra página</a>.</p>
+        <!-- Cada item: um botão (pergunta) + uma div (resposta escondida). O botão chama alternar(número) -->
+        <div class="luiz_faq_item">
+          <button class="luiz_faq_pergunta" onclick="alternar(1)">Por que o Homem-Aranha é seu herói preferido?</button>
+          <div id="resp1" class="luiz_faq_resposta"><p>O Peter Parker é um herói jovem, e isso o torna próximo da gente: ele erra, aprende e cresce a cada filme. Diferente de heróis bilionários, ele vem de uma família de renda simples em Queens, criado pela tia May, e precisa lidar com contas, escola e trabalho além de salvar a cidade. Também admiro o jeito brincalhão: ele faz piada até em combate, mostrando que dá para levar a responsabilidade a sério sem perder o bom humor. Para mim, ele prova que uma pessoa comum pode fazer a diferença.</p></div>
+        </div>
+        <div class="luiz_faq_item">
+          <button class="luiz_faq_pergunta" onclick="alternar(2)">Qual filme do Homem-Aranha você mais gosta?</button>
+          <div id="resp2" class="luiz_faq_resposta"><p>O meu favorito é Homem-Aranha: Um Novo Dia, o primeiro da minha lista. Logo em seguida vem Sem Volta para Casa, que reúne vários personagens e vilões das outras versões do Aranha e coloca o Peter diante de escolhas muito difíceis.</p></div>
+        </div>
+        <div class="luiz_faq_item">
+          <button class="luiz_faq_pergunta" onclick="alternar(3)">Por que incluir filmes dos Vingadores?</button>
+          <div id="resp3" class="luiz_faq_resposta"><p>Porque o Homem-Aranha faz parte do mesmo universo: ele aparece pela primeira vez em Guerra Civil, tem o Tony Stark (Homem de Ferro) como mentor e participa de Guerra Infinita e Ultimato. Para entender a história do Peter, vale conhecer esses filmes.</p></div>
+        </div>
+        <div class="luiz_faq_item">
+          <button class="luiz_faq_pergunta" onclick="alternar(4)">Qual a melhor ordem para assistir?</button>
+          <div id="resp4" class="luiz_faq_resposta"><p>Uma boa opção é a ordem de lançamento, que também segue a história: Homem de Ferro, Guerra Civil, De Volta ao Lar, Guerra Infinita, Ultimato, Longe de Casa, Sem Volta para Casa e Um Novo Dia.</p></div>
+        </div>
+        <div class="luiz_faq_item">
+          <button class="luiz_faq_pergunta" onclick="alternar(5)">Onde posso assistir esses filmes?</button>
+          <div id="resp5" class="luiz_faq_resposta"><p>Veja a seção Onde assistir, acima do FAQ: ela mostra o serviço de cada filme do portal. Como os catálogos mudam com o tempo, vale conferir também no JustWatch.</p></div>
+        </div>
+        <div class="luiz_faq_item">
+          <button class="luiz_faq_pergunta" onclick="alternar(6)">Como posso participar do clube?</button>
+          <div id="resp6" class="luiz_faq_resposta"><p>É só preencher o formulário da seção de contato, logo abaixo, e aceitar as regras do clube. Você também pode responder as perguntas do FAQ na página de perguntas, pelo menu.</p></div>
+        </div>
+      </section>
+
+      <!-- ---------- FORMULÁRIO (validado no JavaScript: 8 campos) ---------- -->
+      <section id="luiz_contato">
+        <h2>Entre para o clube Marvel</h2>
+
+        <form id="luiz_formulario">
+          <!-- form agrupa os campos; o JS vai interceptar o envio -->
+
+          <!-- fieldset agrupa campos relacionados; legend dá o título do grupo -->
+          <fieldset>
+            <legend>Dados pessoais (campos obrigatórios *)</legend>
+
+            <!-- label for="id" liga o texto ao campo com o mesmo id -->
+            <label for="luiz_nome">Nome completo *</label>
+            <input type="text" id="luiz_nome" placeholder="Seu nome">
+
+            <label for="luiz_email">E-mail *</label>
+            <input type="text" id="luiz_email" placeholder="voce@email.com">
+
+            <label for="luiz_idade">Idade *</label>
+            <input type="number" id="luiz_idade">
+          </fieldset>
+
+          <fieldset>
+            <legend>Suas preferências</legend>
+
+            <!-- select: lista suspensa; cada option é uma escolha -->
+            <label for="luiz_filme">Filme favorito</label>
+            <select id="luiz_filme">
+              <option value="">Selecione...</option>
+              <option value="um-novo-dia">Homem-Aranha: Um Novo Dia</option>
+              <option value="sem-volta">Homem-Aranha: Sem Volta para Casa</option>
+              <option value="de-volta">Homem-Aranha: De Volta ao Lar</option>
+              <option value="longe">Homem-Aranha: Longe de Casa</option>
+              <option value="homem-de-ferro">Homem de Ferro</option>
+              <option value="guerra-civil">Capitão América: Guerra Civil</option>
+              <option value="guerra-infinita">Vingadores: Guerra Infinita</option>
+              <option value="ultimato">Vingadores: Ultimato</option>
+            </select>
+
+            <!-- radio: o mesmo name faz com que só uma opção possa ser marcada -->
+            <p>Herói preferido:</p>
+            <label><input type="radio" name="luiz_heroi" value="homem-aranha"> Homem-Aranha</label>
+            <label><input type="radio" name="luiz_heroi" value="homem-de-ferro"> Homem de Ferro</label>
+            <label><input type="radio" name="luiz_heroi" value="capitao"> Capitão América</label>
+
+            <label for="luiz_nota">Sua nota para o universo Marvel (0 a 10)</label>
+            <input type="number" id="luiz_nota">
+
+            <!-- textarea: campo de texto com várias linhas -->
+            <label for="luiz_comentario">Por que você gosta da Marvel?</label>
+            <textarea id="luiz_comentario" rows="4"></textarea>
+          </fieldset>
+
+          <!-- checkbox: marcar ou desmarcar -->
+          <label><input type="checkbox" id="luiz_termos"> Aceito as regras do clube</label>
+
+          <!-- type="button" impede o form de recarregar a página; onclick chama validar() -->
+          <button type="button" onclick="validar()">Enviar</button>
+
+          <!-- CSS INLINE (situação 2 de 2): o JS escreve aqui a mensagem de erro ou de sucesso -->
+          <p id="luiz_mensagem" style="min-height: 24px;"></p>
+        </form>
+      </section>
+
+    </main>
+
+    <!-- ================= ASIDE: área lateral ================= -->
+    <aside id="luiz_lateral">
+      <section class="luiz_bloco_lateral">
+        <h2>Sobre mim</h2>
+        <p>Sou o Luiz Farias, fã do Homem-Aranha e do universo Marvel. Este portal reúne os filmes que mais gosto.</p>
+      </section>
+
+      <section class="luiz_bloco_lateral">
+        <h2>Top 3 do mês</h2>
+        <ol>
+          <li>Homem-Aranha: Um Novo Dia</li>
+          <li>Homem-Aranha: Sem Volta para Casa</li>
+          <li>Homem-Aranha: De Volta ao Lar</li>
+        </ol>
+      </section>
+
+      <section class="luiz_bloco_lateral">
+        <h2>Frase do dia</h2>
+        <p>Escreva aqui uma frase marcante de um dos filmes.</p>
+      </section>
+    </aside>
+
+  </div>
+  <!-- fim do container -->
+
+  <!-- ================= MODAL (uma única estrutura reaproveitável) ================= -->
+  <!-- O JS preenche título, informações e sinopse conforme o botão "Ver detalhes" clicado.
+       No CSS ele começa com display: none (invisível). -->
+  <div id="luiz_modal">
+    <div id="luiz_modal_caixa">
+      <h2 id="luiz_modal_titulo">Título</h2>
+      <p id="luiz_modal_info">Informações</p>
+      <p id="luiz_modal_sinopse">Sinopse</p>
+      <button onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER (usado uma única vez) ================= -->
+  <footer id="luiz_rodape">
+    <p>Portal Marvel · Trabalho Prático Integrador · 2026</p>
+    <p>Desenvolvido por Luiz Farias</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- REQUISITO JS: liga o arquivo externo script.js; fica no final do body para o HTML carregar antes -->
+</body>
+
+</html>
